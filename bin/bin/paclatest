@@ -1,0 +1,7 @@
+#!/bin/bash
+#
+#  paclatest - lists explicitly installed packages from official repos
+#              sorted by install date.
+#  depends: expac
+
+expac --timefmt='%Y-%m-%d %T' '%l %n' | sort -n

@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+#  obctl - functions to control openbox.
+#  depends: xdotool
+
+# - = debug | + = debug off
+set +xv
+
+CUR=$(xdotool get_desktop)
+MAX=$(xdotool get_num_desktops)
+
+if [ "${1}" == "desktop" ]; then
+	if [ "${2}" == "next" ]; then
+		echo "GOING NEXT"
+		if (( CUR < MAX-1 )); then
+			xdotool set_desktop --relative -- +1
+		fi
+	elif [ "${2}" == "prev" ]; then
+		[[ $CUR -gt 0 ]] && xdotool set_desktop --relative -- -1
+	else
+		echo "Usage: obctl desktop [prev|next]"
+	fi
+else
+	echo "Usage: obctl [desktop]"
+fi

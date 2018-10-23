@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+#  pacexplicit - lists explicitly installed packages from official repos.
+
+comm -23 <(pacman -Qqen | sort) <(pacman -Qqg base base-devel | sort)

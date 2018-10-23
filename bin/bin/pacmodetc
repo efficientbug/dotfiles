@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+#  pacmodetc - lists modified /etc files.
+
+pacman -Qii | grep '^MODIFIED' | sed -E 's/^MODIFIED\s+(.*)$/\1/'
